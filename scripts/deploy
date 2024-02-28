@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "installing typescript ..."
+npm install -g typescript
+
+echo "transpiling ..."
+tsc
+
+echo "starting backend ..."
+node ./js/index.js
