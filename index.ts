@@ -27,11 +27,11 @@ var socketServer = app.listen(3001)
 var io = require('socket.io')().listen(socketServer)
 
 /** connect to remote dev database */
-// mongodb+srv://nnadmin:R6LgkV0t180y0CH8@cluster0.jrqlbid.mongodb.net/test
+// mongodb+srv://...
 
 let localURI = "mongodb://localhost:27017/sbox"
-let regularURI = "mongodb+srv://nnadmin:R6LgkV0t180y0CH8@cluster0.jrqlbid.mongodb.net/sbox?retryWrites=true&w=majority"
-let modifiedURI = 'mongodb://nnadmin:R6LgkV0t180y0CH8@ac-p6bqtob-shard-00-00.jrqlbid.mongodb.net:27017,ac-p6bqtob-shard-00-01.jrqlbid.mongodb.net:27017,ac-p6bqtob-shard-00-02.jrqlbid.mongodb.net:27017/sbox?ssl=true&replicaSet=atlas-nlhjg6-shard-0&authSource=admin&retryWrites=true&w=majority'
+let regularURI = "mongodb+srv:/.."
+let modifiedURI = 'mongodb://...'
 db(modifiedURI)
 
 /** server settings */
