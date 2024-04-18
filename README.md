@@ -1,13 +1,36 @@
-## Vortex Driver Test
+# 🚀 TeamGround API
 
-### Context
+Welcome to the TeamGround API ! 
 
-At this repo we are doing basic tests for the super Vortex engine that holds the different database type connections and visualizations. 
+TeamGround is a mobile application that connects soccer amateur players so they can create teams and add players, set up trainings, matches and also competitions. 
 
-### MySQL and PostgreSQL tests (Relational DB's)
 
-1. Connecting to a localhost MySql and postgreSQL server
-2. Implementing a simple test schema for both
-3. in the test schema, we build a test environment using a library management entity relationship diagram (MER) to illustrate our test database, URL --> **https://i.pinimg.com/originals/96/11/6e/96116ed2824825dd32beaca9789453ec.png**
+## 🌟 Features
 
-## Backend Architecture Diagrams (BAD)
+- **Bookings**: Book matches at a field of your preference so you can train or setup amateur matches against other teams 
+- **Trainings**: Create or join a team and train with your friends
+- **Matches**: Setup a match against other teams and get matches by date.
+- **Teams**: Create a team with your friends or join an existing one
+- **Fields**: Explore the fields in your location
+
+## ⚙️ Requirements
+
+To run this API locally, you need to have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 14.x or above)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) package manager
+- [Docker](https://docs.docker.com/)
+- Atlas [MongoDB](https://www.mongodb.com/) with the following collections remotely (could be the free tier)
+    - bookings
+    - fields
+    - matches
+    - notifications
+    - posts
+    - teams
+    - trainings
+    - users 
+
+## 🔧 Installation
+
+Currently this API is in the process of 'Dockeriazation', soon here will be the info to run it locally
+

@@ -1,5 +1,4 @@
 import { nanoid } from "nanoid"
-import { MatchJSON } from "../matches/matches.model"
 
 export interface PostCommentJSON {
     name?: string,

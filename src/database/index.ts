@@ -1,4 +1,8 @@
-//import db from 'mongoose'
+/**
+ * This file binds MongoDB remote collections into the monolith 
+ * 
+ */
+
 import { MongoClient } from "mongodb";
 import PostsDAO from "../dao/postsDAO";
 import BookingsDAO from "../dao/bookingsDAO";
@@ -13,7 +17,6 @@ import NotificationsDAO from "../dao/notificationsDAO";
 const log = require("emoji-logger");
 
 var figlet = require("figlet");
-//db.Promise = global.Promise
 
 export default async function connect(url) {
   let params = {

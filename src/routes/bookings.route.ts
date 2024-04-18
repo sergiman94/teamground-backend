@@ -1,5 +1,5 @@
 const express = require('express')
-import {Request, Response, Router} from 'express'
+import { Router} from 'express'
 import { BookingJSON, Bookings } from '../models/bookings/bookings.model'
 import bookingsService from '../../src/api/services/bookings/bookings.service'
 import {success, errorResponse} from '../api/utils/utils'
@@ -14,7 +14,6 @@ import NotificationsService from '../../src/api/services/notifications/notificat
 import { NotificationJSON } from '../models/notifications/notifications.model'
 const notificationsService = new NotificationsService()
 const router: Router = express.Router()
-const bcrypt = require('bcrypt')
 
 /** list*/
 //TODO: change items.reverse() to sort by item timestamp
