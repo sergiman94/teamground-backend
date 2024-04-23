@@ -32,7 +32,7 @@ var io = require('socket.io')().listen(socketServer)
 let localURI = "mongodb://localhost:27017/sbox"
 let regularURI = "mongodb+srv:/.."
 let modifiedURI = 'mongodb://...'
-db(modifiedURI)
+// db(modifiedURI)
 
 /** server settings */
 server.set('port', process.env.PORT || 3000)

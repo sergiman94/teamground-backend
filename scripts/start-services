@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# declare directory where docker-compose file is located
+declare COMPOSE_DIR
+COMPOSE_DIR="$(dirname "$0")/../docker/compose"
+
+declare -a compose_args
+compose_args=(--file "$COMPOSE_DIR/services.yml")
+
+# start services
+docker-compose "${compose_args[@]}" up --build --detach teamground-api

@@ -1,0 +1,36 @@
+version: '3.5'
+
+# Base configs
+x-build:
+  &default-build
+  context: ../../.
+  dockerfile: docker/images/Dockerfile
+
+x-networks:
+  &default-network
+  - teamground
+
+x-links:
+  &default-links
+  - db
+
+x-service:
+  &default-service
+  build: *default-build
+  platform: linux/amd64
+  networks: *default-network
+  env_file:
+    - ../../defaults.env
+
+# application services
+services:
+  teamground-api:
+    << : *default-service
+    command: sh -c "nodemon --watch './**/*.ts' --exec 'ts-node' index.ts"
+    ports:
+      - 3000:3000
+      
+# app network
+networks:
+  teamground:
+    name: teamground-net
