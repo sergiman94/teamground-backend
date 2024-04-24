@@ -1,3 +1,4 @@
+# we'll use node 14 for now, update once app is stable
 FROM node:14
 
 # Set the Docker container working directory

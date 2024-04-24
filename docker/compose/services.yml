@@ -29,8 +29,23 @@ services:
     command: sh -c "nodemon --watch './**/*.ts' --exec 'ts-node' index.ts"
     ports:
       - 3000:3000
-      
+    depends_on:
+      - mongo-db
+  
+  mongo-db:
+    image: mongodb/mongodb-community-server:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-db-data:/lib/var/mongodb/data
+    networks: *default-network
+
+
 # app network
 networks:
   teamground:
     name: teamground-net
+
+# volumes
+volumes:
+  mongo-db-data:
