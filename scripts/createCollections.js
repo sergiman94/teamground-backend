@@ -1,0 +1,11 @@
+db = connect('mongodb://localhost/teamground')
+
+db.createCollection("bookings")
+db.createCollection("fields")
+db.createCollection("matches")
+db.createCollection("notifications")
+db.createCollection("posts")
+db.createCollection("promos")
+db.createCollection("teams")
+db.createCollection("trainings")
+db.createCollection("users")

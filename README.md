@@ -20,17 +20,15 @@ To run this API locally, you need to have the following installed:
 - [Node.js](https://nodejs.org/) (version 14.x or above)
 - [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) package manager
 - [Docker](https://docs.docker.com/)
-- Atlas [MongoDB](https://www.mongodb.com/) with the following collections remotely (could be the free tier)
-    - bookings
-    - fields
-    - matches
-    - notifications
-    - posts
-    - teams
-    - trainings
-    - users 
+- [mongosh](https://www.mongodb.com/docs/mongodb-shell/install/)
 
 ## 🔧 Installation
 
-Currently this API is in the process of 'Dockeriazation', soon here will be the info to run it locally
+1. Clone this repo
+
+2. Run ``npm install`` to install dependencies on your local
+
+3. Run ``npm run dc:start`` to run the api and mongo db
+
+4. Run ``npm run mongo:create:collections`` to create mongo db collections
 

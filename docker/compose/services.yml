@@ -1,10 +1,15 @@
 version: '3.5'
 
 # Base configs
-x-build:
-  &default-build
+x-build-api:
+  &default-api-build
   context: ../../.
-  dockerfile: docker/images/Dockerfile
+  dockerfile: docker/images/teamgroundapi/Dockerfile
+
+x-build-database:
+  &default-db-build
+  context: ../../.
+  dockerfile: docker/images/mongo/Dockerfile
 
 x-networks:
   &default-network
@@ -14,10 +19,17 @@ x-links:
   &default-links
   - db
 
-x-service:
-  &default-service
-  build: *default-build
+x-api-service:
+  &default-api-service
+  build: *default-api-build
   platform: linux/amd64
+  networks: *default-network
+  env_file:
+    - ../../defaults.env
+
+x-db-service:
+  &default-db-service
+  build: *default-db-build
   networks: *default-network
   env_file:
     - ../../defaults.env
@@ -25,7 +37,7 @@ x-service:
 # application services
 services:
   teamground-api:
-    << : *default-service
+    << : *default-api-service
     command: sh -c "nodemon --watch './**/*.ts' --exec 'ts-node' index.ts"
     ports:
       - 3000:3000
@@ -33,13 +45,12 @@ services:
       - mongo-db
   
   mongo-db:
-    image: mongodb/mongodb-community-server:latest
+    << : *default-db-service
     ports:
       - 27017:27017
     volumes:
-      - mongo-db-data:/lib/var/mongodb/data
+      - mongo-db-data:/data/db
     networks: *default-network
-
 
 # app network
 networks:
