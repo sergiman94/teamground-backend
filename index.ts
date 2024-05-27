@@ -1,56 +1,42 @@
-/***
- *  
- * System is only working with version greater than Node 16.x
- * 
- */
 
-/** imports */
 import db from './src/database/index'
 import morgan from 'morgan'
-import express, { application } from 'express'
+import express from 'express'
 import router from './src/routes'
 import cors from 'cors'
 import session from 'express-session'
 import passport from 'passport'
-import * as passportConfig from './src/api/utils/passportConfig'
-import cookieParser from 'cookie-parser'
-
-var figlet = require('figlet');
-
-/** declarations */
+const figlet = require('figlet');
 const server = express()
 const http = require('http').createServer(server)
+import * as dotenv from "dotenv"
 
-/** socket config */
-const app = express()
-var socketServer = app.listen(3001)
-var io = require('socket.io')().listen(socketServer)
+// init env variables
+dotenv.config()
 
-/** connect to remote dev database */
-// mongodb+srv://...
+// connect to db 
+db(process.env.DB_URL)
 
-let localURI = "mongodb://localhost:27017/sbox"
-let regularURI = "mongodb+srv:/.."
-let modifiedURI = 'mongodb://...'
-// db(modifiedURI)
-
-/** server settings */
+// server config and settings
 server.set('port', process.env.PORT || 3000)
 server.use(morgan('dev'))
 server.use(express.urlencoded({extended:false}))
 server.use(express.json())
 server.use(cors())
-//server.use(cookieParser("secretCode"))
 server.use(session({
     secret: "secretcode",
     resave: false,
     saveUninitialized: false
 }))
+
+// passport init
 server.use(passport.initialize())
 server.use(passport.session())
-/** router and middleware */
+
+// router init 
 router(server)
-/** server listening */
+
+// server init
 http.listen(process.env.PORT || 3000, () => {
     figlet('Vortex Labs', function(err, data) {
         if (err) {

@@ -26,9 +26,11 @@ To run this API locally, you need to have the following installed:
 
 1. Clone this repo
 
-2. Run ``npm install`` to install dependencies on your local
+2. execute ``cp defaults.env .env``
 
-3. Run ``npm run dc:start`` to run the api and mongo db
+3. Run ``npm install`` to install dependencies on your local
 
-4. Run ``npm run mongo:create:collections`` to create mongo db collections
+4. Run ``npm run dc:start`` to run the api and mongo db
+
+5. Run ``npm run mongo:create:collections`` to create mongo db collections
 

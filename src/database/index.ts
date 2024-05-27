@@ -1,9 +1,4 @@
-/**
- * This file binds MongoDB remote collections into the monolith 
- * 
- */
-
-import { MongoClient } from "mongodb";
+import { MongoClient, MongoClientOptions } from "mongodb";
 import PostsDAO from "../dao/postsDAO";
 import BookingsDAO from "../dao/bookingsDAO";
 import FieldsDAO from "../dao/fieldsDAO";
@@ -15,15 +10,14 @@ import TrainingsDAO from "../dao/TrainingsDAO";
 import NotificationsDAO from "../dao/notificationsDAO";
 
 const log = require("emoji-logger");
-
 var figlet = require("figlet");
 
 export default async function connect(url) {
-  let params = {
-    useNewUrlParser: true,
-    poolSize: 50,
-    wtimeout: 2500,
-    useUnifiedTopology: true,
+  console.log(`Connecting to DB url -> ${url}`)
+
+  const params: MongoClientOptions = {
+    maxPoolSize: 50,
+    socketTimeoutMS: 2500
   };
 
   await MongoClient.connect(url, params)
@@ -66,5 +60,5 @@ export default async function connect(url) {
         .then((r) => log(" Notifications DAO connected ", "success"))
         .catch((error) => log(error, "error"));
     })
-    .catch((err) => log(`ERROR CONNECTING TO DB ${err}`, "error"));
+    .catch((err) => log(`   ERROR CONNECTING TO DB:  ${err}`, "error"));
 }

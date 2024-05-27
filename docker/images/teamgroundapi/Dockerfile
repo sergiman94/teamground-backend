@@ -1,5 +1,5 @@
 # we'll use node 14 for now, update once app is stable
-FROM node:14
+FROM node:16
 
 # Set the Docker container working directory
 ENV DOCKER_WORKING_DIR="/usr/local/teamground"

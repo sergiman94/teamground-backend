@@ -50,12 +50,11 @@ services:
       - 27017:27017
     volumes:
       - mongo-db-data:/data/db
-    networks: *default-network
 
 # app network
 networks:
   teamground:
-    name: teamground-net
+    name: teamground
 
 # volumes
 volumes:
